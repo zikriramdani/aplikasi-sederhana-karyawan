@@ -14,9 +14,14 @@
 <div class="flex-container">
 	<header>
 		<a href="./">Home</a>
-		<a href="insert_bagian.php" class="active">Insert Bagian</a>
-		<a href="insert_karyawan.php">Insert Karyawan</a>
-		<a href="insert_gaji.php">Insert Gaji</a>
+		<div class="submenu">
+		  	<a href="#" class="active">Master</a>
+		  	<div class="submenu-content">
+			    <a href="insert_bagian.php" class="active">Insert Bagian</a>
+				<a href="insert_karyawan.php">Insert Karyawan</a>
+				<a href="insert_gaji.php">Insert Gaji</a>
+		  	</div>
+		</div>
 		<a href="report_karyawan.php">Report Karyawan</a>
 	</header>
 

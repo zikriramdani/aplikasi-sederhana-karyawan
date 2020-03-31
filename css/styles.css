@@ -20,14 +20,40 @@ header {
 header a {
 	color: black;
     padding: 15px;
+    font-size: 16px;
+    text-decoration: none;
 }
 
 header a:hover {
 	color: red;
+	text-decoration: underline;
 }
 
 header a.active {
 	color: red;
+	text-decoration: underline;
+}
+
+.submenu {
+  	position: relative;
+  	display: inline-block;
+}
+
+.submenu-content {
+	display: none;
+	position: absolute;
+	min-width: 160px;
+	z-index: 1;
+	text-align: left;
+}
+
+.submenu-content a {
+  	display: block;
+  	padding-bottom: 0;
+}
+
+.submenu:hover .submenu-content {
+	display: block;
 }
 
 .content {
