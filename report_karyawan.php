@@ -25,12 +25,12 @@
 	</header>
 
 	<section class="content">
-		<h3 class="text-center">DAFTAR PEMBAYARAN GAJI KARYAWAN<br>Periode Januari 2013</h3>
+		<h3 class="text-center">DAFTAR PEMBAYARAN GAJI KARYAWAN<br>Periode : Januari 2013</h3>
 
 		<?php
 			include 'koneksi.php';
 
-			$query = "SELECT * FROM tbl_karyawan k join tbl_bagian b on k.kode_bagian = b.kode_bagian";
+			$query = "SELECT * FROM tbl_karyawan JOIN tbl_bagian ON tbl_karyawan.kode_bagian = tbl_bagian.kode_bagian JOIN tbl_gaji ON tbl_karyawan.no_induk = tbl_gaji.no_induk";
 			$read = mysqli_query($koneksi, $query);
 
 			$no = 1;
@@ -51,7 +51,7 @@
 					    	echo "<th class='text-center'>Gol</th>";
 					    	echo "<th class='text-center'>Gaji Pokok</th>";
 					  	echo "</tr>";
-					  	
+
 				        echo "<tr>";
 				        echo "<td class='text-center'>".$no."</td>";
 				        echo "<td class='text-center'>".$join_data['no_induk']."</td>";
@@ -59,7 +59,7 @@
 				        echo "<td class='text-center'>".$join_data['kode_bagian']."</td>";
 				        echo "<td>".$join_data['tanggal_masuk']."</td>";
 				        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
-				        echo "<td class='text-right'>".$join_data['kepala_bagian']."</td>";
+				        echo "<td class='text-right'>".$join_data['jumlah']."</td>";
 				        echo "</tr>";   
 					echo "</table>";
 				echo "</div>";
