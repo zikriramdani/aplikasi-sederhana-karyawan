@@ -18,7 +18,7 @@
 		<a href="report_karyawan.php">Report Karyawan</a>
 	</header>
 
-	<section class="content">
+	<section class="content d-flex justify-content-center align-items-center">
 		<h3 class="text-center">
 			Selamat datang di <br>Aplikasi Sederhana Karyawan <br>dengan<br> Menu Insert Bagian, Karyawan, Gaji dan Report Karyawan.
 		</h3>
