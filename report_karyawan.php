@@ -27,39 +27,44 @@
 	<section class="content">
 		<h3 class="text-center">DAFTAR PEMBAYARAN GAJI KARYAWAN<br>Periode Januari 2013</h3>
 
-		<div><h3 class="mb-0"><b>Nama Bagian : a</b></h3 class="mb-0"></div>
-		<div class="mb-20">
-			<?php
-				include 'koneksi.php';
+		<?php
+			include 'koneksi.php';
 
-				$query = "SELECT * FROM tbl_bagian ORDER BY id_bagian DESC";
-				$read = mysqli_query($koneksi, $query);
-			?>
-			<table>
-			  	<tr>
-			    	<th class="text-center">No.</th>
-			    	<th class="text-center">No Induk</th>
-			    	<th class="text-center">Nama Karyawan</th>
-			    	<th class="text-center">Umur<br>(Tahun)</th>
-			    	<th class="text-center">Tgl Masuk</th>
-			    	<th class="text-center">Gol</th>
-			    	<th class="text-center">Gaji Pokok</th>
-			  	</tr>
-			  	<?php  
-				    while($bagian_data = mysqli_fetch_array($read)) {         
+			$query = "SELECT * FROM tbl_karyawan k join tbl_bagian b on k.kode_bagian = b.kode_bagian";
+			$read = mysqli_query($koneksi, $query);
+
+			$no = 1;
+		?>
+		<?php  
+			while($join_data = mysqli_fetch_array($read)) {  
+				echo "<div>";
+					echo "<h3 class='mb-0'><b>Nama Bagian : ".$join_data['nama_bagian']."</b></h3>";
+				echo "</div>";
+				echo "<div class='mb-20'>";
+					echo "<table>";
+					  	echo "<tr>";
+					    	echo "<th class='text-center'>No.</th>";
+					    	echo "<th class='text-center'>No Induk</th>";
+					    	echo "<th class='text-center'>Nama Karyawan</th>";
+					    	echo "<th class='text-center'>Umur<br>(Tahun)</th>";
+					    	echo "<th class='text-center'>Tgl Masuk</th>";
+					    	echo "<th class='text-center'>Gol</th>";
+					    	echo "<th class='text-center'>Gaji Pokok</th>";
+					  	echo "</tr>";
+					  	
 				        echo "<tr>";
-				        echo "<td class='text-center'>".$bagian_data['kode_bagian']."</td>";
-				        echo "<td class='text-center'>".$bagian_data['nama_bagian']."</td>";
-				        echo "<td>".$bagian_data['kepala_bagian']."</td>";
-				        echo "<td class='text-center'>".$bagian_data['kode_bagian']."</td>";
-				        echo "<td>".$bagian_data['nama_bagian']."</td>";
-				        echo "<td class='text-center'>".$bagian_data['kepala_bagian']."</td>"; 
-				        echo "<td class='text-right'>".$bagian_data['kepala_bagian']."</td>";
-				        echo "</tr>";        
-				    }
-			    ?>
-			</table>
-		</div>
+				        echo "<td class='text-center'>".$no."</td>";
+				        echo "<td class='text-center'>".$join_data['no_induk']."</td>";
+				        echo "<td>".$join_data['nama']."</td>";
+				        echo "<td class='text-center'>".$join_data['kode_bagian']."</td>";
+				        echo "<td>".$join_data['tanggal_masuk']."</td>";
+				        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
+				        echo "<td class='text-right'>".$join_data['kepala_bagian']."</td>";
+				        echo "</tr>";   
+					echo "</table>";
+				echo "</div>";
+			}
+		?>
 	</section>
 
 	<?php include 'footer.php';?>
