@@ -36,7 +36,8 @@
 				$query = "SELECT * FROM tbl_karyawan ORDER BY id_karyawan ASC";
 				$readKaryawan = mysqli_query($koneksi, $query);
 			?>
-		  	<select name="no_induk">
+		  	<select name="no_induk" id='no_induk' onchange='autofill()'>
+		  		<option disabled selected>Pilih no induk</option>
 		  		<?php  
 					while($bagian_data = mysqli_fetch_array($readKaryawan)) {  
 					    echo "<option value='".$bagian_data['no_induk']."'>".$bagian_data['no_induk']."</option>";
@@ -45,10 +46,10 @@
 		  	</select><br>
 
 		  	<label>Tahun:</label><br>
-		  	<input type="text" name="nama_bagian" placeholder="" required readonly><br>
+		  	<input type="text" name="tahun" id="tahun" required readonly><br>
 
 		  	<label>Bulan:</label><br>
-		  	<input type="text" name="kepala_bagian" placeholder="" required readonly><br>
+		  	<input type="text" name="bulan" id="bulan" required readonly><br>
 
 		  	<label>Kode Gaji:</label><br>
 		  	<select name="kode_gaji">
@@ -57,7 +58,7 @@
 		  		<option value="IN">IN (Insentif)</option>
 		  	</select><br>
 
-		  	<label>Jumlan:</label><br>
+		  	<label>Jumlah:</label><br>
 		  	<input type="number" name="jumlah" placeholder="Masukkan jumlah" required><br>
 
 		  	<input type="submit" name="Simpan" value="Simpan">
@@ -97,6 +98,22 @@
 
 	<?php include 'footer.php';?>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    function autofill(){
+    	var no_induk = $("#no_induk").val();
+    	$.ajax({
+	        url: 'proses_autocomplete.php',
+	        data:"no_induk="+no_induk ,
+	    }).success(function(data) {
+	        var json = data,
+	        obj = JSON.parse(json);
+	        $('#tahun').val(obj.tahun);
+	        $('#bulan').val(obj.bulan);
+	    });
+    }
+</script>
 
 </body>
 </html>
