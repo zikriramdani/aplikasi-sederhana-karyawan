@@ -66,7 +66,7 @@
 		</form>
 
 		<hr>
-		<div class="text-center"><h3>Data Bagian</h3></div>
+		<div class="text-center"><h3>Data Karyawan</h3></div>
 		<div class="mb-20">
 			<?php
 			include 'koneksi.php';

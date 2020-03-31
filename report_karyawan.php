@@ -41,7 +41,7 @@
 					echo "<h3 class='mb-0'><b>Nama Bagian : ".$join_data['nama_bagian']."</b></h3>";
 				echo "</div>";
 				echo "<div class='mb-20'>";
-					echo "<table>";
+					echo "<table class='table-report'>";
 					  	echo "<tr>";
 					    	echo "<th class='text-center'>No.</th>";
 					    	echo "<th class='text-center'>No Induk</th>";
@@ -61,7 +61,7 @@
                     	$today  = new DateTime();
                     	$y 	 	= $today->diff($birthDate)->y;
 			        	echo "<td class='text-center'>".$y."</td>";
-			        	
+
 				        echo "<td>".$join_data['tanggal_masuk']."</td>";
 				        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
 				        echo "<td class='text-right'>".$join_data['jumlah']."</td>";
