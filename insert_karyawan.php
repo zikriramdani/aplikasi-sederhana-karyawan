@@ -89,8 +89,8 @@
 				        echo "<td>".$karyawan_data['kode_bagian']."</td>";
 				        echo "<td>".$karyawan_data['nama']."</td>";
 				        echo "<td>".$karyawan_data['tempat_lahir']."</td>"; 
-				        echo "<td>".$karyawan_data['tanggal_lahir']."</td>"; 
-				        echo "<td>".$karyawan_data['tanggal_masuk']."</td>";   
+				        echo "<td>".date('d M Y', strtotime($karyawan_data['tanggal_lahir']))."</td>"; 
+				        echo "<td>".date('d M Y', strtotime($karyawan_data['tanggal_masuk']))."</td>";   
 				        echo "<td>".$karyawan_data['golongan']."</td>";  
 				        echo "</tr>";
 				    }

@@ -62,7 +62,7 @@
                     	$y 	 	= $today->diff($birthDate)->y;
 			        	echo "<td class='text-center'>".$y."</td>";
 
-				        echo "<td>".$join_data['tanggal_masuk']."</td>";
+				        echo "<td class='text-center'>".date('d M Y', strtotime($join_data['tanggal_masuk']))."</td>";
 				        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
 				        echo "<td class='text-right'>".$join_data['jumlah']."</td>";
 				        echo "</tr>";   
