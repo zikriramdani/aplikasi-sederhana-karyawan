@@ -43,13 +43,13 @@
 			  	<?php  
 				    while($bagian_data = mysqli_fetch_array($read)) {         
 				        echo "<tr>";
-				        echo "<td>".$bagian_data['kode_bagian']."</td>";
-				        echo "<td>".$bagian_data['nama_bagian']."</td>";
+				        echo "<td class='text-center'>".$bagian_data['kode_bagian']."</td>";
+				        echo "<td class='text-center'>".$bagian_data['nama_bagian']."</td>";
 				        echo "<td>".$bagian_data['kepala_bagian']."</td>";
-				        echo "<td>".$bagian_data['kode_bagian']."</td>";
+				        echo "<td class='text-center'>".$bagian_data['kode_bagian']."</td>";
 				        echo "<td>".$bagian_data['nama_bagian']."</td>";
-				        echo "<td>".$bagian_data['kepala_bagian']."</td>"; 
-				        echo "<td>".$bagian_data['kepala_bagian']."</td>";
+				        echo "<td class='text-center'>".$bagian_data['kepala_bagian']."</td>"; 
+				        echo "<td class='text-right'>".$bagian_data['kepala_bagian']."</td>";
 				        echo "</tr>";        
 				    }
 			    ?>
