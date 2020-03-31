@@ -87,7 +87,7 @@
 				        echo "<td>".$gaji_data['tahun']."</td>";
 				        echo "<td>".$gaji_data['bulan']."</td>";
 				        echo "<td>".$gaji_data['kode_gaji']."</td>";
-				        echo "<td>".$gaji_data['jumlah']."</td>"; 
+				        echo "<td>".number_format($gaji_data['jumlah'], 0, ".", ".")."</td>"; 
 				        echo "</tr>";        
 				    }
 			    ?>

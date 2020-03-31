@@ -64,7 +64,7 @@
 
 				        echo "<td class='text-center'>".date('d M Y', strtotime($join_data['tanggal_masuk']))."</td>";
 				        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
-				        echo "<td class='text-right'>".$join_data['jumlah']."</td>";
+				        echo "<td class='text-right'>".number_format($join_data['jumlah'], 0, ".", ".")."</td>";
 				        echo "</tr>";   
 					echo "</table>";
 				echo "</div>";
