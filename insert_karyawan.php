@@ -36,10 +36,10 @@
 		  	<?php
 				include 'koneksi.php';
 
-				$query = "SELECT * FROM tbl_bagian ORDER BY id_bagian ASC";
+				$query = "SELECT * FROM tbl_bagian ORDER BY id_bagian DESC";
 				$read = mysqli_query($koneksi, $query);
 			?>
-			<select name="kode_bagian">
+			<select name="kode_bagian" required>
 				<?php  
 					while($bagian_data = mysqli_fetch_array($read)) {  
 					    echo "<option value='".$bagian_data['kode_bagian']."'>".$bagian_data['kode_bagian']."</option>";
@@ -71,11 +71,12 @@
 			<?php
 			include 'koneksi.php';
 
-			$query = "SELECT * FROM tbl_karyawan ORDER BY no_induk DESC";
+			$query = "SELECT * FROM tbl_karyawan ORDER BY id_karyawan DESC";
 			$read = mysqli_query($koneksi, $query);
 			?>
 			<table>
 			  	<tr>
+			  		<th>No Induk</th>
 			    	<th>Kode Bagian</th>
 			    	<th>Nama</th>
 			    	<th>Tempat Lahir</th>
@@ -86,6 +87,7 @@
 			  	<?php  
 				    while($karyawan_data = mysqli_fetch_array($read)) {      
 				        echo "<tr>";
+				        echo "<td>".$karyawan_data['no_induk']."</td>";
 				        echo "<td>".$karyawan_data['kode_bagian']."</td>";
 				        echo "<td>".$karyawan_data['nama']."</td>";
 				        echo "<td>".$karyawan_data['tempat_lahir']."</td>"; 

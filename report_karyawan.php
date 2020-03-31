@@ -30,16 +30,19 @@
 		<?php
 			include 'koneksi.php';
 
-			$query = "SELECT * FROM tbl_karyawan JOIN tbl_bagian ON tbl_karyawan.kode_bagian = tbl_bagian.kode_bagian JOIN tbl_gaji ON tbl_karyawan.no_induk = tbl_gaji.no_induk";
-			$read = mysqli_query($koneksi, $query);
-
-			$no = 1;
+			$queryBagian = "SELECT * FROM tbl_bagian";
+			$readBagian = mysqli_query($koneksi, $queryBagian);
 		?>
-		<?php  
-			while($join_data = mysqli_fetch_array($read)) {  
+		<?php
+			while($bagian_data = mysqli_fetch_array($readBagian)) {  
 				echo "<div>";
-					echo "<h3 class='mb-0'><b>Nama Bagian : ".$join_data['nama_bagian']."</b></h3>";
+					echo "<h3 class='mb-0'><b>Nama Bagian : ".$bagian_data['nama_bagian']."</b></h3>";
 				echo "</div>";
+
+				$queryJoin = "SELECT * FROM tbl_karyawan JOIN tbl_bagian ON tbl_karyawan.kode_bagian = tbl_bagian.kode_bagian JOIN tbl_gaji ON tbl_karyawan.no_induk = tbl_gaji.no_induk AND tbl_karyawan.kode_bagian = '$bagian_data[kode_bagian]'";
+				$readJoin = mysqli_query($koneksi, $queryJoin);
+				$no = 0;
+				
 				echo "<div class='mb-20'>";
 					echo "<table class='table-report'>";
 					  	echo "<tr>";
@@ -51,21 +54,24 @@
 					    	echo "<th class='text-center'>Gol</th>";
 					    	echo "<th class='text-center'>Gaji Pokok</th>";
 					  	echo "</tr>";
+						while($join_data = mysqli_fetch_array($readJoin)) {
+							$no++;
 
-				        echo "<tr>";
-				        echo "<td class='text-center'>".$no."</td>";
-				        echo "<td class='text-center'>".$join_data['no_induk']."</td>";
-				        echo "<td>".$join_data['nama']."</td>";
+					        echo "<tr>";
+					        echo "<td class='text-center'>$no</td>";
+					        echo "<td class='text-center'>".$join_data['no_induk']."</td>";
+					        echo "<td>".$join_data['nama']."</td>";
 
-			        	$birthDate 	= new DateTime($join_data['tanggal_lahir']);
-                    	$today  = new DateTime();
-                    	$y 	 	= $today->diff($birthDate)->y;
-			        	echo "<td class='text-center'>".$y."</td>";
+				        	$birthDate 	= new DateTime($join_data['tanggal_lahir']);
+	                    	$today  = new DateTime();
+	                    	$y 	 	= $today->diff($birthDate)->y;
+				        	echo "<td class='text-center'>".$y."</td>";
 
-				        echo "<td class='text-center'>".date('d M Y', strtotime($join_data['tanggal_masuk']))."</td>";
-				        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
-				        echo "<td class='text-right'>".number_format($join_data['jumlah'], 0, ".", ".")."</td>";
-				        echo "</tr>";   
+					        echo "<td class='text-center'>".date('d M Y', strtotime($join_data['tanggal_masuk']))."</td>";
+					        echo "<td class='text-center'>".$join_data['golongan']."</td>"; 
+					        echo "<td class='text-right'>".number_format($join_data['jumlah'], 0, ".", ".")."</td>";
+					        echo "</tr>";   	
+						}
 					echo "</table>";
 				echo "</div>";
 			}

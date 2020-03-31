@@ -28,7 +28,7 @@
 	<section class="content">
 		<p>Silahkan isi form gaji dibawah ini!</p>
 
-		<form action="proses_insert_bagian.php" method="POST">
+		<form action="proses_insert_gaji.php" method="POST">
 		  	<label>No Induk:</label><br>
 		  	<?php
 				include 'koneksi.php';
@@ -36,7 +36,7 @@
 				$query = "SELECT * FROM tbl_karyawan ORDER BY id_karyawan ASC";
 				$readKaryawan = mysqli_query($koneksi, $query);
 			?>
-		  	<select name="no_induk" id='no_induk' onchange='autofill()'>
+		  	<select name="no_induk" id='no_induk' onchange='autofill()' required>
 		  		<option disabled selected>Pilih no induk</option>
 		  		<?php  
 					while($bagian_data = mysqli_fetch_array($readKaryawan)) {  
@@ -52,7 +52,8 @@
 		  	<input type="text" name="bulan" id="bulan" required readonly><br>
 
 		  	<label>Kode Gaji:</label><br>
-		  	<select name="kode_gaji">
+		  	<select name="kode_gaji" required>
+		  		<option disabled selected>Pilih kode gaji</option>
 		  		<option value="GP">GP (Gaji Pokok)</option>
 		  		<option value="TO">TO (Tunjangan Obat)</option>
 		  		<option value="IN">IN (Insentif)</option>
@@ -70,7 +71,7 @@
 			<?php
 				include 'koneksi.php';
 
-				$query = "SELECT * FROM tbl_gaji ORDER BY id_gaji ASC";
+				$query = "SELECT * FROM tbl_gaji ORDER BY id_gaji DESC";
 				$readGaji = mysqli_query($koneksi, $query);
 			?>
 			<table>
