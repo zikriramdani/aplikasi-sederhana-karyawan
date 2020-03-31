@@ -19,8 +19,8 @@
 	</header>
 
 	<section class="content">
-		<h3>
-			Selamat datang di <br>Aplikasi Sederhana Karyawan dengan Menu Insert Bagian, Karyawan, Gaji dan Report Karyawan.
+		<h3 class="text-center">
+			Selamat datang di <br>Aplikasi Sederhana Karyawan <br>dengan<br> Menu Insert Bagian, Karyawan, Gaji dan Report Karyawan.
 		</h3>
 	</section>
 
